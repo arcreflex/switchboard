@@ -1,0 +1,25 @@
+{
+  "name": "switchboard",
+  "version": "0.1.0",
+  "description": "Local-first messaging switchboard",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --watch ./packages/local-consumer/src/main.ts",
+    "start": "node ./packages/local-consumer/src/main.ts",
+    "lint": "eslint ."
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/workers/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "eslint": "^9.36.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  }
+}
