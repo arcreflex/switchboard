@@ -1,3 +1,8 @@
 node_modules/
 tmp/
 .DS_Store
+.env
+
+# AI Review
+.ai-review/reviews
+.ai-review/user-context.json

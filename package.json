@@ -17,10 +17,18 @@
     "packages/workers/*"
   ],
   "devDependencies": {
+    "@arcreflex/ai-review": "^1.0.15",
     "@types/node": "^24.5.2",
     "eslint": "^9.36.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.44.0"
+  },
+  "dependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   }
 }
