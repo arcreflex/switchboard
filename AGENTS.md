@@ -1,4 +1,46 @@
-# Specification
+# Repository Guidelines
+
+## Project Structure & Module Organization
+
+- `packages/local-consumer`: Node 24 TypeScript daemon (`src/main.ts`).
+- `packages/workers/{email-ingress,sms-ingress,outbound}`: Cloudflare Workers (stubs; `src/` to be implemented).
+- `specs/`: Source of truth for contracts and behavior.
+- `docs/`: Schema and runbooks (see `docs/SCHEMA.md`).
+- `infra/`: Wrangler and Twilio setup notes.
+
+## Build, Test, and Development Commands
+
+- `npm run dev` — runs local consumer with watch: `node --watch packages/local-consumer/src/main.ts`.
+- `npm start` — runs the consumer once.
+- `npm run lint` — ESLint over the repo (Prettier via lint‑staged).
+- Pre‑commit hook runs: `tsc --noEmit`, `lint-staged`, `eslint .`.
+
+## Coding Style & Naming Conventions
+
+- Language: TypeScript (Node 24, ESM). Compile options: `noEmit`, strict; erasable TS only.
+- Formatting: Prettier (`.prettierrc.json`), semicolons on, singleQuote=false, trailingComma=es5.
+- Linting: ESLint (typescript‑eslint recommended config).
+- Naming: packages `@switchboard/*`; dirs/files kebab‑case; classes PascalCase; functions/vars camelCase.
+
+## Testing Guidelines
+
+- No formal runner yet. Add unit tests near code as `*.test.ts` when adding logic.
+- Aim for focused tests on parsing/normalization and queue/ACK behavior; follow acceptance criteria in `specs/acceptance-tests.md`.
+- Keep tests hermetic; avoid network calls (mock providers).
+
+## Commit & Pull Request Guidelines
+
+- Commits: short, imperative subject; explain why in the body; reference issues.
+- Keep PRs small and scoped. Include: problem statement, changes, validation steps, and any logs/screenshots.
+- Update specs when behavior or contracts change; the specs are authoritative.
+
+## Security & Configuration Tips
+
+- Never log secrets or raw message bodies; redact PII per `specs/privacy-retention.md`.
+- Bind secrets via Wrangler (Workers) or `.env.local` (consumer). See `specs/configuration.md`.
+- Enforce Twilio signature validation and SSRF allow‑listing for media.
+
+## Specification
 
 Detailed specifications for each domain live in the `specs/` directory.
 
@@ -20,4 +62,4 @@ Detailed specifications for each domain live in the `specs/` directory.
 | Error Catalog          | Error codes, retryability, operator guidance        | [error-catalog.md](specs/error-catalog.md)           |
 | Privacy & Retention    | Data minimization, retention, redaction             | [privacy-retention.md](specs/privacy-retention.md)   |
 
-**Authoritative schema:** See `docs/SCHEMA.md` for the `SwitchboardEvent` type. Specs below refer to fields by path (e.g., `content.attachments[*].r2.key`) and define invariants around them rather than restating types.
+Authoritative schema: see `docs/SCHEMA.md` for the `SwitchboardEvent` type. Specs refer to fields by path and define invariants rather than restating types.
