@@ -41,7 +41,3 @@
 
 - **Given** an email with HTML + 2 attachments (1 MB total), **when** processed, **then** the queue event references R2 for HTML and both attachments, and total event payload remains under the budget.
 - **Given** a duplicate email delivery with the same `Message-ID`, **then** only one queue event exists.
-
-## Current vs Intended (2025‑09‑20)
-
-Current Worker is a stub. Implement full parsing, persistence, normalization, and publish.

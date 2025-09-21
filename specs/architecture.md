@@ -45,8 +45,3 @@ A local‑first switchboard that unifies email and SMS/MMS ingress, emits normal
 
 - Unified schema: `docs/SCHEMA.md`
 - Operations and Runbook: `docs/OPERATIONS.md`, `docs/RUNBOOK.md`
-
-## Current vs Intended (2025‑09‑20)
-
-**Current:** Worker stubs and a minimal local consumer entrypoint.  
-**Intended:** Full behavior per specs below, including storage, queueing, signature validation, retries, and deferred replies.

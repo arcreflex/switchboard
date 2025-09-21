@@ -26,7 +26,3 @@ Send replies after local processing on the original channel (email or SMS/MMS). 
 
 - Replying to an email with `correlation.messageId` present MUST thread under the original message in common clients.
 - Replying to an SMS MUST succeed for plain text; an MMS exceeding policy limits MUST be rejected locally with a clear error.
-
-## Current vs Intended (2025‑09‑20)
-
-Outbound Worker is a stub. Local consumer pipeline not yet sending. Implement provider clients and headers policy.

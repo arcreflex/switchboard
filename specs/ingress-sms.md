@@ -37,7 +37,3 @@
 
 - **Given** a signed MMS with 3 images, **then** R2 holds 3 objects with accurate content type/size, and the queue event lists them in `attachments`.
 - **Given** an unsigned webhook, **then** return `401` without publishing.
-
-## Current vs Intended (2025‑09‑20)
-
-Current Worker is a stub. Implement signature validation, media fetch with SSRF protections, normalization, and queue publish.
